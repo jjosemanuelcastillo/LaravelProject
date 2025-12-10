@@ -130,7 +130,7 @@ class ProductsController extends Controller
         $order->order_date   = now();
         $order->save();
 
-        $orderDetail             = new OrderDetails();
+        $orderDetail             = new orderDetails();
         $orderDetail->order_id   = $order->id;
         $orderDetail->product_id = $product->id;
         $orderDetail->cantity   = 1;
