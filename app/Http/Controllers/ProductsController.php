@@ -3,7 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
-use App\Models\orderDetails;
+use App\Models\OrderDetail;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -130,7 +130,7 @@ class ProductsController extends Controller
         $order->order_date   = now();
         $order->save();
 
-        $orderDetail             = new orderDetails();
+        $orderDetail             = new OrderDetail();
         $orderDetail->order_id   = $order->id;
         $orderDetail->product_id = $product->id;
         $orderDetail->cantity   = 1;
