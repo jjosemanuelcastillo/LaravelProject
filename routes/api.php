@@ -55,3 +55,4 @@ Route::get('/best-sellers', [ProductsController::class, 'bestSeller']);
 Route::post('/compra/{id}', [ProductsController::class, 'purchaseProduct']);
 Route::get('/pedidos', [OrdersController::class, 'show']);
 Route::get('/pedidos/{id}', [OrdersController::class, 'orderDetails']);
+Route::put('/edit/{id}', [UserController::class, 'update']);
