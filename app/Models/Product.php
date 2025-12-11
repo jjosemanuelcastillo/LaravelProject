@@ -20,6 +20,6 @@ class Product extends Model
     use HasFactory;
     public function orderDetails()
     {
-        return $this->hasMany(orderDetails::class, 'product_id');
+        return $this->hasMany(OrderDetail::class, 'product_id');
     }
 }
