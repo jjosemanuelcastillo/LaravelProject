@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\API\AdminController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\LoginController;
 use App\Http\Controllers\API\LogoutController;
 use App\Http\Controllers\API\RegisterController;
@@ -11,15 +10,15 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\UsersController;
-use Illuminate\Auth\Events\Login;
-use Symfony\Component\HttpFoundation\Request;
+use Illuminate\Support\Facades\Route;
 
-Route::group(['middleware' => 'api', 'prefix' => 'auth',], function () {
+Route::group(['middleware' => 'api', 'prefix' => 'auth'], function () {
     //Ruta para devovler el Token del usuario
     Route::post(uri: '/login', action: LoginController::class);
     Route::post('/register', [RegisterController::class, 'register']);
+    Route::put('/edit/{id}', [UserController::class, 'update']);
 });
-Route::group(['middleware' => 'api', 'prefix' => 'auth',], function () {
+Route::group(['middleware' => 'api', 'prefix' => 'auth'], function () {
     //Ruta para devovler el Token del usuario
     Route::post(uri: '/logout', action: LogoutController::class);
 });
@@ -45,7 +44,6 @@ Route::middleware(['auth:api', 'user'])->get('/me', function () {
     return auth('api')->user();
 });
 
-
 Route::get('/categorias', [CategoryController::class, 'index']);
 Route::get('/categoria/{id}/products', [CategoryController::class, 'show']);
 Route::get('/categoria/{id}/productsByCategory', [ProductsController::class, 'productByCategory']);
@@ -55,4 +53,3 @@ Route::get('/best-sellers', [ProductsController::class, 'bestSeller']);
 Route::post('/compra/{id}', [ProductsController::class, 'purchaseProduct']);
 Route::get('/pedidos', [OrdersController::class, 'show']);
 Route::get('/pedidos/{id}', [OrdersController::class, 'orderDetails']);
-Route::put('/edit/{id}', [UserController::class, 'update']);
