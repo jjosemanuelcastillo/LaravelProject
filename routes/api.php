@@ -9,6 +9,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\supplierController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +34,7 @@ Route::middleware(['auth:api', 'admin'])->group(function () {
     Route::middleware(['auth:api'])->post('/addProduct', [ProductsController::class, 'store']);
     Route::middleware(['auth:api'])->post('/addCategory', [CategoryController::class, 'store']);
     Route::middleware(['auth:api'])->get('/categorias', [CategoryController::class, 'index']);
+    Route::middleware(['auth:api'])->get('/proveedores', [supplierController::class, 'index']);
     Route::middleware(['auth:api'])->get('/getOrderByUser/{id}', [OrdersController::class, 'getOrderByUserId']);
     Route::middleware(['auth:api'])->delete('/users/{id}', [AuthController::class, 'destroy']);
     Route::middleware(['auth:api'])->get('/pedidos/{id}', [OrdersController::class, 'orderDetails']);
