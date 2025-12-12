@@ -29,7 +29,6 @@ Route::middleware(['auth:api', 'admin'])->group(function () {
     Route::put('/product/{id}/update', [ProductsController::class, 'update']);
     Route::delete('/destroyProduct/{id}', [ProductsController::class, 'destroy']);
     Route::get('/users', [UsersController::class, 'index']);
-    Route::middleware(['auth:api'])->get('/users/count', [UserController::class, 'countUsers']);
     Route::middleware(['auth:api'])->put('/products/{id}', [ProductsController::class, 'update']);
     Route::middleware(['auth:api'])->post('/addProduct', [ProductsController::class, 'store']);
     Route::middleware(['auth:api'])->post('/addCategory', [CategoryController::class, 'store']);

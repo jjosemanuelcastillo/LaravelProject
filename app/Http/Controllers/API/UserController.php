@@ -8,20 +8,7 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function countUsers(Request $request)
-    {
-        $user = auth('api')->user();
-        if (! $user) {
-            return response()->json(['error' => 'No autenticado'], 401);
-        }
 
-        if ($user->role !== 'admin') {
-            return response()->json(['error' => 'No autorizado'], 403);
-        }
-
-        $count = User::where('role', '!=', 'admin')->count();
-        return response()->json(['count' => $count]);
-    }
 
     public function update($id, Request $request)
     {
