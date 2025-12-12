@@ -42,6 +42,9 @@ Route::middleware(['auth:api', 'admin'])->group(function () {
 Route::middleware(['auth:api', 'user'])->get('/me', function () {
     return auth('api')->user();
 });
+Route::middleware(['auth:api', 'admin'])->get('/me', function () {
+    return auth('api')->user();
+});
 
 Route::get('/categorias', [CategoryController::class, 'index']);
 Route::get('/categoria/{id}/products', [CategoryController::class, 'show']);
